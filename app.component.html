@@ -1,0 +1,194 @@
+<div class="form-screen">
+  <mat-toolbar>
+
+    <span>Author Details</span>
+
+  </mat-toolbar>
+  <form [formGroup]="form">
+    <div class="row">
+
+      <div class="col-6">
+        <div class="row">
+          <div class="col-4 align">First Name<span class="required">* &nbsp;</span> </div>
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="firstName">
+              <mat-error
+                *ngIf="((form.get('firstName').touched || form.get('firstName').dirty) && showFormError) && form.get('firstName').hasError('required')">
+                First Name is Required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4 align">Last Name <span class="required">* &nbsp;</span> </div>
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="lastName">
+              <mat-error
+                *ngIf="((form.get('lastName').touched || form.get('lastName').dirty) && showFormError) && form.get('lastName').hasError('required')">
+                Last Name is Required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4 align">Publish Name<span class="required">* &nbsp;</span> </div>
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="publishName">
+              <mat-error
+                *ngIf="((form.get('publishName').touched || form.get('publishName').dirty) && showFormError) && form.get('publishName').hasError('required')">
+                Publish Name is Required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4 align">Company </div>
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="company">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4 align">City</div>
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="city">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">Status <span class="required">* &nbsp;</span> </div>
+          <div class="col-6">
+            <mat-radio-group aria-label="Select an option" formControlName="status">
+              <mat-radio-button value="active">Active</mat-radio-button>
+              <mat-radio-button value="inactive">Inactive</mat-radio-button>
+              <mat-error
+                *ngIf="((form.get('status').touched || form.get('status').dirty) && showFormError) && form.get('status').hasError('required')">
+                Status is Required
+              </mat-error>
+            </mat-radio-group>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4 align">Email <span class="required">* &nbsp;</span> </div>
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="email">
+              <mat-error
+                *ngIf="((form.get('email').touched || form.get('email').dirty) && showFormError) && form.get('email').hasError('required')">
+                Email is Required
+              </mat-error>
+              <mat-error *ngIf="form.get('email').hasError('email')">
+                Email should be valid
+              </mat-error>
+
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4 align">Country <span class="required">* &nbsp;</span> </div>
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <mat-select [formControl]="country" multiple>
+
+                <mat-option *ngFor="let country of countryList" [value]="country">{{country}}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="((form.get('country').touched || form.get('country').dirty) &&
+             showFormError) && form.get('country').hasError('required')">
+                Country is required</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-6">
+        <div class="row">
+          <div class="col-4 align">Position</div>
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="position">
+
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4 align">Address</div>
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="address">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">Guest Author</div>
+          <div class="col-6">
+            <mat-checkbox formControlName="guestAuthor"></mat-checkbox>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4 align">Phone Number <span class="required">* &nbsp;</span> </div>
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="phone" [textMask]="{mask: mask}">
+
+              <mat-error
+                *ngIf="((form.get('phone').touched || form.get('phone').dirty) && showFormError) && form.get('phone').hasError('required')">
+                Phone Number is Required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-4 align">Fax</div>
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="fax">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4 align">Province State</div>
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="province">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4 align">Zip Code</div>
+          <div class="col-6">
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="zipCode" [textMask]="{mask: zip}">
+
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">Author Category</div>
+          <div class="col-6">
+            <mat-radio-group aria-label="Select an option" formControlName="authorCat">
+              <mat-radio-button value="us">us</mat-radio-button>
+              <mat-radio-button value="canada">canada</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="row">
+    <div class="col-9"></div>
+    <div class="col-3">
+      <button mat-raised-button class="cancel-btn" (click)="reset()" type="button">
+        Cancel
+      </button>
+      <button mat-raised-button class="submit-btn" type="submit" (click)="save()">
+        Save</button>
+    </div>
+  </div>
+</div>
